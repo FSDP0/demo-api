@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-demo-api-deploy
+  namespace: api
+  labels:
+    app: node-demo-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-demo-api
+  template:
+    metadata:
+      labels:
+        app: node-demo-api
+    spec:
+      containers:
+        - name: node-demo-api
+          image: fsdp0/node-demo-api
+          ports:
+          - name: http
+            containerPort: 3000
+          resources:
+            requests:
+              cpu: 500m
+              memory: 500M
+            limits:
+              cpu: 1
+              memory: 1Gi

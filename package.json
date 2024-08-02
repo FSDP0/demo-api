@@ -1,0 +1,24 @@
+{
+  "name": "node-demo-api",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/fspd0/node-demo-api.git"
+  },
+  "author": {
+    "name": "LeeGueTae",
+    "email": "ray.lee@osckorea.com"
+  },
+  "scripts": {
+    "build:docker": "docker build .",
+    "build:skaffold": "skaffold build",
+    "start": "node src",
+    "start:docker": "docker run --name node-demo-api -d -p 3000:3000 node-demo-api:v0.1",
+    "deploy:skaffold": "skaffold run"
+  },
+  "dependencies": {
+    "koa": "^2.15.3",
+    "koa-router": "^12.0.1"
+  }
+}
