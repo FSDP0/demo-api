@@ -1,0 +1,20 @@
+apiVersion: skaffold/v4beta5
+kind: Config
+metadata:
+  name: python-demo-api
+build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.RELEASE}}"
+  local:
+    push: true
+  artifacts:
+  - image: fsdp0/python-demo-api
+    docker:
+      dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - k8s/demo-api-ns.yaml
+    - k8s/demo-api-deploy.yaml
+    - k8s/demo-api-svc.yaml
+    - k8s/demo-api-ingress.yaml
